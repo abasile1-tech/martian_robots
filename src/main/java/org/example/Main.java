@@ -7,5 +7,6 @@ public class Main {
     Robot r2d2 = new Robot("R2-D2", 3, 3, 'N', "FRRFLLFFRRFLL");
     Robot hk47 = new Robot("HK-47", 0, 3, 'W', "LLFFFLFLFL");
     c3po.printName();
+    System.out.print(c3po.followInstructions());
   }
 }
