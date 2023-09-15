@@ -14,5 +14,7 @@ public class Main {
     System.out.print("\n");
     hk47.printName();
     System.out.print(hk47.followInstructions());
+    System.out.print(Robot.xScents);
+    System.out.print(Robot.yScents);
   }
 }

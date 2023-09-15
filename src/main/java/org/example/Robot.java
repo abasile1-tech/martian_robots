@@ -1,12 +1,16 @@
 package main.java.org.example;
 
+import java.util.ArrayList;
+
 public class Robot {
   private String name;
   private int xPosition;
   private int yPosition;
   private char orientation;
   private String instructions;
-  private String lostString = "";
+  private final String lostString = " LOST";
+  public static ArrayList<Integer> xScents = new ArrayList<Integer>();
+  public static ArrayList<Integer> yScents = new ArrayList<Integer>();
 
   public Robot(String name, int xPosition, int yPosition, char orientation, String instructions) {
     this.name = name;
@@ -42,10 +46,6 @@ public class Robot {
 
   public void setOrientation(char orientation) {
     this.orientation = orientation;
-  }
-
-  public void setLostString(String lostString) {
-    this.lostString = lostString;
   }
 
   public String followInstructions() {
@@ -86,9 +86,9 @@ public class Robot {
         switch (getOrientation()) {
           case 'N':
             newPosition = getYPosition() + 1;
-            System.out.println(newPosition);
+            // System.out.println(newPosition);
             if (newPosition >= 4 || newPosition < 0) {
-              setLostString(" LOST");
+              yScents.add(getYPosition());
               return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
                   + Character.toString(getOrientation()) + this.lostString;
             }
@@ -96,9 +96,9 @@ public class Robot {
             break;
           case 'E':
             newPosition = getXPosition() + 1;
-            System.out.println(newPosition);
+            // System.out.println(newPosition);
             if (newPosition >= 4 || newPosition < 0) {
-              setLostString(" LOST");
+              xScents.add(getXPosition());
               return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
                   + Character.toString(getOrientation()) + this.lostString;
             }
@@ -106,9 +106,9 @@ public class Robot {
             break;
           case 'S':
             newPosition = getYPosition() - 1;
-            System.out.println(newPosition);
+            // System.out.println(newPosition);
             if (newPosition >= 4 || newPosition < 0) {
-              setLostString(" LOST");
+              yScents.add(getYPosition());
               return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
                   + Character.toString(getOrientation()) + this.lostString;
             }
@@ -116,9 +116,9 @@ public class Robot {
             break;
           case 'W':
             newPosition = getXPosition() - 1;
-            System.out.println(newPosition);
+            // System.out.println(newPosition);
             if (newPosition >= 4 || newPosition < 0) {
-              setLostString(" LOST");
+              xScents.add(getXPosition());
               return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
                   + Character.toString(getOrientation()) + this.lostString;
             }
@@ -127,8 +127,7 @@ public class Robot {
         }
       }
     }
-    String returnString = Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
-        + Character.toString(getOrientation()) + this.lostString;
-    return returnString;
+    return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
+        + Character.toString(getOrientation());
   }
 }
