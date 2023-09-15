@@ -49,7 +49,6 @@ All instruction strings will be less than 100 characters in length.
 For each robot position/instruction in the input, the output should indicate the final grid position and orientation of the robot. If a robot falls off the edge of the grid the word “LOST” should be printed after the position and orientation.
 
 Sample Input
-5 3
 1 1 E
 RFRFRFRF
 
