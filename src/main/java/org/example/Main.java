@@ -8,5 +8,11 @@ public class Main {
     Robot hk47 = new Robot("HK-47", 0, 3, 'W', "LLFFFLFLFL");
     c3po.printName();
     System.out.print(c3po.followInstructions());
+    System.out.print("\n");
+    r2d2.printName();
+    System.out.print(r2d2.followInstructions());
+    System.out.print("\n");
+    hk47.printName();
+    System.out.print(hk47.followInstructions());
   }
 }
