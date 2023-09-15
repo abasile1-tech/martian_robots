@@ -40,7 +40,7 @@ The remaining input consists of a sequence of robot positions and instructions (
 
 Each robot is processed sequentially, i.e., finishes executing the robot instructions before the next robot begins execution.
 
-The maximum value for any coordinate is 4.
+The maximum value for any coordinate is 3 without falling off. A robot can safely be at positions 0 through 3 in both the x and the y.
 
 All instruction strings will be less than 100 characters in length.
 
