@@ -2,12 +2,17 @@ package main.java.org.example;
 
 public class Robot {
   private String name;
-  private int xPosition = 0;
-  private int yPosition = 0;
-  private char orientation = 'N';
+  private int xPosition;
+  private int yPosition;
+  private char orientation;
+  private String instructions;
 
-  public Robot(String name) {
+  public Robot(String name, int xPosition, int yPosition, char orientation, String instructions) {
     this.name = name;
+    this.xPosition = xPosition;
+    this.yPosition = yPosition;
+    this.orientation = orientation;
+    this.instructions = instructions;
   }
 
   public void printName() {
