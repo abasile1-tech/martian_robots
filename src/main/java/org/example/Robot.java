@@ -3,12 +3,11 @@ package main.java.org.example;
 import java.util.ArrayList;
 
 public class Robot {
-  private String name;
+  private final String name;
   private int xPosition;
   private int yPosition;
   private char orientation;
-  private String instructions;
-  private final String lostString = " LOST";
+  private final String instructions;
   public static ArrayList<Integer> xScents = new ArrayList<Integer>();
   public static ArrayList<Integer> yScents = new ArrayList<Integer>();
 
@@ -67,64 +66,73 @@ public class Robot {
             break;
         }
       } else if (c == 'L') {
-        switch (getOrientation()) {
-          case 'N':
-            setOrientation('W');
-            break;
-          case 'E':
-            setOrientation('N');
-            break;
-          case 'S':
-            setOrientation('E');
-            break;
-          case 'W':
-            setOrientation('S');
-            break;
-        }
+          switch (getOrientation()) {
+              case 'N' -> setOrientation('W');
+              case 'E' -> setOrientation('N');
+              case 'S' -> setOrientation('E');
+              case 'W' -> setOrientation('S');
+          }
       } else if (c == 'F') {
         int newPosition;
+        String lostString = " LOST";
         switch (getOrientation()) {
-          case 'N':
-            newPosition = getYPosition() + 1;
-            // System.out.println(newPosition);
-            if (newPosition >= 4 || newPosition < 0) {
-              yScents.add(getYPosition());
-              return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
-                  + Character.toString(getOrientation()) + this.lostString;
-            }
-            setYPosition(newPosition);
-            break;
-          case 'E':
-            newPosition = getXPosition() + 1;
-            // System.out.println(newPosition);
-            if (newPosition >= 4 || newPosition < 0) {
-              xScents.add(getXPosition());
-              return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
-                  + Character.toString(getOrientation()) + this.lostString;
-            }
-            setXPosition(newPosition);
-            break;
-          case 'S':
-            newPosition = getYPosition() - 1;
-            // System.out.println(newPosition);
-            if (newPosition >= 4 || newPosition < 0) {
-              yScents.add(getYPosition());
-              return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
-                  + Character.toString(getOrientation()) + this.lostString;
-            }
-            setYPosition(newPosition);
-            break;
-          case 'W':
-            newPosition = getXPosition() - 1;
-            // System.out.println(newPosition);
-            if (newPosition >= 4 || newPosition < 0) {
-              xScents.add(getXPosition());
-              return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
-                  + Character.toString(getOrientation()) + this.lostString;
-            }
-            setXPosition(newPosition);
-            break;
-        }
+              case 'N' -> {
+                  newPosition = getYPosition() + 1;
+                  // System.out.println(newPosition);
+                  if (!yScents.isEmpty() && newPosition == yScents.get(0)) {
+                      System.out.println("hi");
+                      break;
+                  }
+                  if (newPosition >= 4 || newPosition < 0) {
+                      yScents.add(getYPosition());
+                      return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
+                              + Character.toString(getOrientation()) + lostString;
+                  }
+                  setYPosition(newPosition);
+              }
+              case 'E' -> {
+                  newPosition = getXPosition() + 1;
+                  // System.out.println(newPosition);
+                  if (!xScents.isEmpty() && newPosition == xScents.get(0)) {
+                      System.out.println("hi");
+                      break;
+                  }
+                  if (newPosition >= 4 || newPosition < 0) {
+                      xScents.add(getXPosition());
+                      return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
+                              + Character.toString(getOrientation()) + lostString;
+                  }
+                  setXPosition(newPosition);
+              }
+              case 'S' -> {
+                  newPosition = getYPosition() - 1;
+                  // System.out.println(newPosition);
+                  if (!yScents.isEmpty() && newPosition == yScents.get(0)) {
+                      System.out.println("hi");
+                      break;
+                  }
+                  if (newPosition >= 4 || newPosition < 0) {
+                      yScents.add(getYPosition());
+                      return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
+                              + Character.toString(getOrientation()) + lostString;
+                  }
+                  setYPosition(newPosition);
+              }
+              case 'W' -> {
+                  newPosition = getXPosition() - 1;
+                  // System.out.println(newPosition);
+                  if (!xScents.isEmpty() && newPosition == xScents.get(0)) {
+                      System.out.println("hi");
+                      break;
+                  }
+                  if (newPosition >= 4 || newPosition < 0) {
+                      xScents.add(getXPosition());
+                      return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
+                              + Character.toString(getOrientation()) + lostString;
+                  }
+                  setXPosition(newPosition);
+              }
+          }
       }
     }
     return Integer.toString(getXPosition()) + " " + Integer.toString(getYPosition()) + " "
